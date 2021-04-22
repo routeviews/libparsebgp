@@ -94,6 +94,11 @@ parsebgp_error_t parsebgp_bgp_decode_ext(parsebgp_opts_t *opts,
   switch (msg->type) {
   case PARSEBGP_BGP_TYPE_OPEN:
     PARSEBGP_MAYBE_MALLOC_ZERO(msg->types.open);
+    // make sure we have a valid message length for the open.
+    // minimum length for an open is 29 bytes
+    if (msg->len <= 28) {
+      return PARSEBGP_INVALID_MSG;
+    }
     err = parsebgp_bgp_open_decode(opts, msg->types.open, buf, &slen, remain);
     break;
 
