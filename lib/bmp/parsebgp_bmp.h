@@ -142,6 +142,10 @@ typedef enum parsebgp_bmp_stat_counter_type {
       messages received. */
   PARSEBGP_BMP_STATS_DUP_UPD = 13,
 
+  /** Stat Type = 65531: (32-bit Counter) Number of FRR Next-Hop invalids
+      encountered. */
+  PARSEBGP_BMP_STATS_FRR_NH_INVALID = 65531,
+
 } parsebgp_bmp_stat_counter_type_t;
 
 typedef struct parsebgp_bmp_stats_counter_afi_safi_gauge {

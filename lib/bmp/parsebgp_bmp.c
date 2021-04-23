@@ -167,6 +167,7 @@ static parsebgp_error_t parse_stats_report(parsebgp_opts_t *opts,
     case PARSEBGP_BMP_STATS_UPD_TREAT_AS_WITHDRAW:
     case PARSEBGP_BMP_STATS_PREFIX_TREAT_AS_WITHDRAW:
     case PARSEBGP_BMP_STATS_DUP_UPD:
+    case PARSEBGP_BMP_STATS_FRR_NH_INVALID:
       PARSEBGP_ASSERT(sc->len == sizeof(sc->data.counter_u32));
       PARSEBGP_DESERIALIZE_UINT32(buf, len, nread, sc->data.counter_u32);
       break;
@@ -259,6 +260,7 @@ static void dump_stats_report(const parsebgp_bmp_stats_report_t *msg, int depth)
     case PARSEBGP_BMP_STATS_UPD_TREAT_AS_WITHDRAW:
     case PARSEBGP_BMP_STATS_PREFIX_TREAT_AS_WITHDRAW:
     case PARSEBGP_BMP_STATS_DUP_UPD:
+    case PARSEBGP_BMP_STATS_FRR_NH_INVALID:
       PARSEBGP_DUMP_INT(depth, "u32", sc->data.counter_u32);
       break;
 
